@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Router } from '@reach/router';
 
-function App() {
+import Provider from "./providers/Provider";
+import AppWrapper from "./components/appWrapper";
+import NotFound from './pages/404';
+
+import App from './pages/App';
+import Job from './pages/job';
+
+const IndexPage = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider>
+      <AppWrapper>
+        <Router>
+          <App path="/" component={App} />
+          <Job path="/job" component={Job} />
+          <NotFound default  />
+        </Router>
+      </AppWrapper>
+    </Provider>
   );
 }
 
-export default App;
+export default IndexPage;
