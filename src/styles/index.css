@@ -1,9 +1,8 @@
+@tailwind base;
 
+@tailwind components;
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
+@tailwind utilities;
 
 body {
   margin: 0;
@@ -17,4 +16,24 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.bg-gob {
+  background-color: #005267;
+}
+
+.bg-gob-red {
+  background-color: #f27476
+}
+
+.bg-gob-cyan {
+  background-color: #43c5f5;
+}
+
+.text-gob-red {
+  color: #f27476
+}
+
+.text-gob-cyan {
+  color:#0093d3
 }

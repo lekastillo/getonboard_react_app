@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material/react-material-icon": "^0.15.0",
     "@reach/router": "^1.2.1",
     "autoprefixer": "^9.7.3",
     "axios": "^0.19.0",
@@ -17,11 +18,13 @@
     "tailwindcss": "^1.1.4"
   },
   "scripts": {
-    "build:style":"tailwind build src/index.css -o src/tailwind.css",
+    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "webpack --env.ENVIRONMENT=development --config webpack.config.dev.js",
+    "build": "webpack --env.ENVIRONMENT=production --config webpack.config.build.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,5 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
