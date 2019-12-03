@@ -17,7 +17,7 @@ function Job({ id }) {
   const setFavorite = async () => {
     try {
       setSaving(true);
-      await axios.post(`http://localhost:5000/favorite_jobs`,
+      await axios.post(`https://getonboard-favorite-api.herokuapp.com/favorite_jobs`,
       {
         "favorite_job":{
           "job_id": job.id
@@ -36,7 +36,7 @@ function Job({ id }) {
       setLoading(true);
       console.log('getting favorites jobs');
       
-      const data=await axios.get(`http://localhost:5000/favorite_jobs`);
+      const data=await axios.get(`https://getonboard-favorite-api.herokuapp.com/favorite_jobs`);
       dispatchFavoriteJobs({ type: `FETCH_FAVORITE_JOBS`, payload: data.data });
       console.log({ data })
       setLoading(false)
