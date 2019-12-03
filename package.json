@@ -14,17 +14,17 @@
     "react-content-loader": "^4.3.2",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-html-parser": "^2.0.2",
     "react-scripts": "3.2.0",
     "tailwindcss": "^1.1.4"
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "npm run build:style && react-scripts start",
-    "build": "react-scripts build",
+    "build": "webpack --env.ENVIRONMENT=production --config webpack.config.build.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "webpack --env.ENVIRONMENT=development --config webpack.config.dev.js",
-    "build": "webpack --env.ENVIRONMENT=production --config webpack.config.build.js"
+    "dev": "webpack --env.ENVIRONMENT=development --config webpack.config.dev.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,5 +41,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack-cli": "^3.3.10"
+  }
 }

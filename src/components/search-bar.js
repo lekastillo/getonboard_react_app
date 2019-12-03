@@ -1,6 +1,4 @@
 import React from "react";
-import MaterialIcon from '@material/react-material-icon';
-
 
 const SearchBar = ( { handleChange }) => {
   return (

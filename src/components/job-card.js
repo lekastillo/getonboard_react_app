@@ -2,7 +2,7 @@ import React from "react";
 
 const JobCard = ( props ) => {
   return (
-    <div className="max-w mx-auto flex flex-row justify-between p-6 bg-white rounded-lg shadow-md mt-4" onClick={ ()=> props.setSelectedJob(props.job)}>
+    <div className="max-w mx-auto flex flex-row justify-between cursor-pointer hover:bg-gray-200 p-6 bg-white rounded-lg shadow-md mt-4" onClick={ ()=> props.setSelectedJob(props.job)}>
       <div className="flex-shrink-0">
           <img className="h-16 w-16 rounded" src={props.job.logo_url} alt="Company Logo" />
       </div>

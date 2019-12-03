@@ -10,7 +10,7 @@ import JobLoading from "../components/JobLoading";
 import Alert from "../components/alert";
 
 const App = () => {
-  const { jobs, dispatch, job, dispatchSelecetedJob } = useContext(Context)
+  const { jobs, dispatch, dispatchSelecetedJob } = useContext(Context)
   const [loading, setLoading] = useState(false)
 
   const fetchJobs = async (q) => {
@@ -46,7 +46,7 @@ const App = () => {
     <>
       <SEO keywords={[`jobs`, `favorite jobs`]} title="Home" />
       <SearchBard handleChange={ handleChange }/>
-      <h2> { job ? job.id : []} </h2>
+
       <h2 className="text-3xl border-l-2 border-blue-dark pl-4 text-blue-darker mt-8">List of jobs ({ jobs && jobs.length > 0 ? jobs.length : `0` })</h2>
       <section className="job-list mt-4">
 
