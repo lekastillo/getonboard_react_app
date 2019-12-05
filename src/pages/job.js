@@ -17,12 +17,26 @@ function Job({ id }) {
   const setFavorite = async () => {
     try {
       setSaving(true);
-      await axios.post(`https://getonboard-favorite-api.herokuapp.com/favorite_jobs`,
+      await axios.post(`${process.env.REACT_APP_USER_API}/favorite_jobs`,
       {
         "favorite_job":{
-          "job_id": job.id
+          "job_id": job.id,
+          "title": job.title,
+          "logo_url": job.logo_url
         }
       });
+      getFavoriteJobs();
+      setSaving(false)
+    } catch (error) {
+      alert('something went wrong')
+      setSaving(false)
+    }
+  }
+
+  const unsetFavorite = async () => {
+    try {
+      setSaving(true);
+      await axios.delete(`${process.env.REACT_APP_USER_API}/favorite_jobs/${job.id}`);
       getFavoriteJobs();
       setSaving(false)
     } catch (error) {
@@ -34,11 +48,9 @@ function Job({ id }) {
   const getFavoriteJobs = async () => {
     try {
       setLoading(true);
-      console.log('getting favorites jobs');
       
-      const data=await axios.get(`https://getonboard-favorite-api.herokuapp.com/favorite_jobs`);
+      const data=await axios.get(`${process.env.REACT_APP_USER_API}/favorite_jobs`);
       dispatchFavoriteJobs({ type: `FETCH_FAVORITE_JOBS`, payload: data.data });
-      console.log({ data })
       setLoading(false)
     } catch (error) {
       alert('something went wrong')
@@ -66,7 +78,7 @@ function Job({ id }) {
   return (
     <div>
       <SEO
-        keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
+        keywords={[`job`, `job description`]}
         title={job ? job.title : ''}
       />
 
@@ -87,9 +99,10 @@ function Job({ id }) {
             { job.remote === false ? <p className='bg-gray-300 ml-2 mr-2 p-1 rounded text-sm font-bold '> {job.city } - {job.country }</p> : [] }
             { job.remote && <p className='bg-gray-300 ml-2 mr-2 p-1 rounded text-sm font-bold '> <i className="material-icons text-sm">room</i> Remote </p> }
             <p className='bg-gray-300 ml-2 mr-2 p-1 rounded text-sm font-bold '> $ {job.salary } </p>
+            { isSaving && <i className="material-icons">replay</i> }
             { favorite_jobs.filter(item => item.job_id=== job.id ).length === 0 ? (
                 <span className='bg-gray-300 ml-2 mr-2 p-1 pl-2 pr-2 rounded text-sm font-bold self-end cursor-pointer' onClick={()=> setFavorite() }> <i className="material-icons text-sm">favorite_border</i> Mark as favorite </span>
-              ): (<span className='bg-gob-cyan ml-2 mr-2 p-1 pl-2 pr-2 rounded text-sm font-bold self-end'> <i className="material-icons text-gob-red text-sm">favorite</i> Favorite </span>)
+              ): (<span className='bg-gob-cyan ml-2 mr-2 p-1 pl-2 pr-2 rounded text-sm font-bold self-end cursor-pointer' onClick={()=> unsetFavorite() }> <i className="material-icons text-gob-red text-sm">favorite</i> Favorite </span>)
             }
            </div>
         </div>

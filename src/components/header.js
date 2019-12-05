@@ -36,6 +36,10 @@ function Header() {
               title: `Jobs`
             },
             {
+              route: `/favorite_jobs`,
+              title: `Favorite Jobs`
+            },
+            {
               route: `/about`,
               title: `About`
             }

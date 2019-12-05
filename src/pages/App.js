@@ -16,7 +16,7 @@ const App = () => {
   const fetchJobs = async (q) => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`https://www.getonbrd.com/search/jobs?q=${q}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/search/jobs?q=${q}`);
 
       await dispatch({ type: `FETCH_JOBS`, payload: data.jobs });
       setLoading(false);
