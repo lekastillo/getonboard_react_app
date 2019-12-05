@@ -18,16 +18,6 @@ const JobCard = ( props ) => {
         { props.job.company.name } | <span className="text-sm text-gob-red font-bold p-1 bg-gray-200 rounded" > $ { props.job.salary }</span>
         </span>
       </div>
-      <div className="ml-6 flex flex-col items-stretch justify-center">
-        <div className="w-20 h-12 ">
-        {/* <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-            <i className="material-icons text-xs text-gray-500 ">favorite_border</i>
-        </button>
-        {/* <button className="bg-blue-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-            <i className="material-icons text-xs text-gob-red ">favorite</i>
-        </button> */}
-        </div>
-      </div>
     </div>
   );
 };

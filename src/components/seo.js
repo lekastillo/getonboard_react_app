@@ -15,15 +15,15 @@ function SEO({ description, lang, meta, keywords, title }) {
       meta={[
         {
           name: `description`,
-          content: 'metaDescription'
+          content: 'React Job Challenge'
         },
         {
           property: `og:title`,
-          content: 'title'
+          content: 'React Job Challenge'
         },
         {
           property: `og:description`,
-          content: 'metaDescription'
+          content: 'React Job Challenge'
         },
         {
           property: `og:type`,
@@ -35,15 +35,15 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: `twitter:creator`,
-          content: 'site.siteMetadata.author'
+          content: '@lekastillo'
         },
         {
           name: `twitter:title`,
-          content: 'title'
+          content: 'React GetOnBoard Challenge'
         },
         {
           name: `twitter:description`,
-          content: 'metaDescription'
+          content: 'React Job Challenge'
         }
       ]
         .concat(
@@ -55,8 +55,8 @@ function SEO({ description, lang, meta, keywords, title }) {
             : []
         )
         .concat(meta)}
-      title={title}
-      titleTemplate={`%s | ${'site.siteMetadata.title'}`}
+      title={'React Job Challenge'}
+      titleTemplate={`React Job Challenge`}
     />
   );
 }
