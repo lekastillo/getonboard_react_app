@@ -10,15 +10,17 @@ import JobLoading from "../components/JobLoading";
 import Alert from "../components/alert";
 
 const App = () => {
-  const { jobs, dispatch, dispatchSelecetedJob } = useContext(Context)
+  const { jobs, favorite_jobs, dispatch, dispatchSelecetedJob, dispatchFavoriteJobs } = useContext(Context)
   const [loading, setLoading] = useState(false)
 
   const fetchJobs = async (q) => {
     setLoading(true);
     try {
       const { data } = await axios.get(`${process.env.REACT_APP_API}/search/jobs?q=${q}`);
+      const { data_favorite_jobs } = await axios.get(`${process.env.REACT_APP_USER_API}/favorite_jobs`);
 
       await dispatch({ type: `FETCH_JOBS`, payload: data.jobs });
+      await dispatchFavoriteJobs({ type: `FETCH_FAVORITE_JOBS`, payload: data_favorite_jobs.data });
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -58,6 +60,7 @@ const App = () => {
               setSelectedJob={setSelectedJob}
               onClick  = { setSelectedJob }
               job = { job }
+              favorite_job = { favorite_jobs.filter(item => item.job_id===job.id ).length === 1 ? true : false }
             />
           ))}
         </>
