@@ -7,7 +7,7 @@ const SearchBar = ( { handleChange }) => {
         <span className="w-auto flex justify-end items-center text-grey p-2">
           <i className="material-icons text-3xl">search</i>
         </span>
-        <input className="w-full bg-gray-200 rounded p-2 " type="text" placeholder="Try 'React + Rails'" onChange={ handleChange } />
+        <input className="w-full bg-gray-200 rounded p-2 " type="text" placeholder="Try React + Rails" onChange={ handleChange } />
         </div>
     </section>
     );
